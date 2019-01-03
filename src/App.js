@@ -18,6 +18,9 @@ class App extends Component {
       c.value = 0;
       return c;
     });
+    for (let index = 0; index < 10; index++) {
+      console.log(index);
+    }
     this.setState({ counters: counters2 });
   };
   handleDelete = counterID => {
