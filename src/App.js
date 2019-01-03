@@ -13,14 +13,19 @@ class App extends Component {
       { id: 5, value: 0 }
     ]
   };
+  findTotalCount = () => {
+    let output = 0;
+    for (let i = 0; i < this.state.counters.length; i++) {
+      //console.log(this.state.counters[i].value);
+      output += this.state.counters[i].value;
+    }
+    return output;
+  };
   handleReset = () => {
     let counters2 = this.state.counters.map(c => {
       c.value = 0;
       return c;
     });
-    for (let index = 0; index < 10; index++) {
-      console.log(index);
-    }
     this.setState({ counters: counters2 });
   };
   handleDelete = counterID => {
@@ -37,9 +42,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar
-          totCounters={this.state.counters.filter(c => c.value > 0).length}
-        />
+        <NavBar totCounters={this.findTotalCount()} />
         <main className="container">
           <Counters
             onReset={this.handleReset}
